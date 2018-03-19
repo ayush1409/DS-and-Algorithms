@@ -20,24 +20,24 @@ class Node(object):
 
 	def remove(self, data, parentNode):
 
-		if data < self.data:
+		if data < self.data: 															# Search in Left Subtree
 			if self.leftChild:
 				self.leftChild.remove(self, self)
 			else:
 				self.leftChild = Node(data)
 
-		elif data > self.data:
+		elif data > self.data:															# Search in right Subtree
 			if self.rightChild:
 				self.rightChild.remove(data, self)
 			else:
 				self.rightChild = Node(data)
 
 		else:
-			if self.leftChild is not None and self.rightChild is not None:
+			if self.leftChild is not None and self.rightChild is not None:				# Node Consisting of the childs
 				self.data = self.rightChild.getMin()
 				self.rightChild.remove(data, self)
 
-			elif parentNode.leftChild == self:
+			elif parentNode.leftChild == self:											# Node Consisting single child
 				if self.leftChild:
 					tempNode = self.leftChild
 				else:
